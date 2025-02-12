@@ -1,4 +1,9 @@
-# Set the directory we want to store zinit and plugins
+#Add Fastboot
+if [ -d "$HOME/adb-fastboot" ] ; then
+ export PATH="$HOME/adb-fastboot:$PATH"
+fi
+
+# Zinit and plugins folder
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Download Zinit, if not installed
@@ -19,6 +24,7 @@ zinit light Aloxaf/fzf-tab
 # Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
+zinit snippet OMZP::symfony
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
@@ -57,8 +63,11 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias cat='bat'
 alias ls='ls --color'
 alias ll='ls -la --color'
-alias vim='nvim'
+alias nv='nvim'
 alias c='clear'
+alias htop="btop"
+alias speedtest-quick="wget -O /dev/null https://proof.ovh.net/files/100Mb.dat"
+alias speedtest-full="wget -O /dev/null https://proof.ovh.net/files/1Gb.dat"
 
 # Shell integrations
 eval "$(fzf --zsh)"
